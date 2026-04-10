@@ -330,7 +330,8 @@ h1 {
   opacity: 0.6;
 }
 
-.admin-box button {
+.admin-box > button:not(.home-btn)  {
+  position: relative; /* ← AÑADIR */
   margin-top: 20px;
   width: 100%;
   padding: 12px;
@@ -344,4 +345,38 @@ h1 {
 
 .admin-box button:hover {
   background: #ff6b57;
+}
+
+/* (TODO TU CSS ORIGINAL SIN CAMBIOS ARRIBA) */
+
+/* BOTÓN HOME ADMIN */
+.home-btn {
+  margin: 15px auto 0;
+  background: transparent !important;
+  border: none;
+  cursor: pointer;
+
+  display: block;
+
+  width: fit-content !important;
+  padding: 5px;
+
+  opacity: 0.6;
+  transition: 0.2s;
+}
+
+.home-btn svg {
+  width: 24px;
+  height: 24px;
+  stroke: #aaa;
+  fill: none;
+  stroke-width: 1.5;
+}
+
+.home-btn:hover {
+  opacity: 1;
+}
+
+.home-btn:hover svg {
+  stroke: #4a90e2;
 }

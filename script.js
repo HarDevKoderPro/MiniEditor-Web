@@ -266,3 +266,13 @@ togglePass.addEventListener("click", () => {
   adminPassword.type =
     adminPassword.type === "password" ? "text" : "password";
 });
+
+// =============================
+// BOTÓN HOME DESDE ADMIN
+// =============================
+const btnHomeFromAdmin = document.getElementById("btnHomeFromAdmin");
+
+btnHomeFromAdmin.addEventListener("click", () => {
+  gestionarScreen.classList.add("hidden");
+  welcomeScreen.classList.remove("hidden");
+});
