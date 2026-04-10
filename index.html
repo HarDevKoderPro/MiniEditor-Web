@@ -36,21 +36,65 @@
     </div>
   </div>
 
-  <!-- SECCIÓN 2: EDITOR (Oculto al inicio) -->
+  <!-- SECCIÓN 2: EDITOR -->
   <div id="editorScreen" class="screen hidden">
     <div class="main-layout">
-      <!-- Panel Izquierdo: Código -->
+
       <aside class="sidebar">
+
+        <!-- HEADER MODIFICADO -->
         <header class="editor-header">
-          <button class="nav-btn" onclick="location.reload()">🏠</button>
+
+          <!-- HOME -->
+          <button class="nav-btn" onclick="location.reload()">
+            <svg viewBox="0 0 24 24">
+              <path d="M3 10L12 3L21 10V21H14V14H10V21H3Z" />
+            </svg>
+          </button>
+
+          <!-- SELECTOR -->
           <div class="selector-tema">
-            <span>📁 Seleccionar Tema</span>
-            <span class="arrow">⌄</span>
+            <svg viewBox="0 0 24 24">
+              <path d="M3 7H9L11 9H21V19H3Z" />
+            </svg>
+            <span>Seleccionar Tema</span>
+            <svg class="arrow" viewBox="0 0 24 24">
+              <path d="M6 9L12 15L18 9" />
+            </svg>
           </div>
-          <div class="progreso">0 / 3</div>
+
+          <!-- PROGRESO -->
+          <div class="progreso">0 / 0</div>
+
+          <!-- ACCIONES -->
           <div class="top-actions">
-            <span>🔄</span> <span>💾</span> <span>🗖</span>
+
+            <!-- REFRESH -->
+            <button>
+              <svg viewBox="0 0 24 24">
+                <path d="M21 12A9 9 0 1 1 6 5" />
+                <path d="M21 3V9H15" />
+              </svg>
+            </button>
+
+            <!-- MOBILE -->
+            <button>
+              <svg viewBox="0 0 24 24">
+                <rect x="7" y="2" width="10" height="20" rx="2" />
+                <line x1="11" y1="18" x2="13" y2="18" />
+              </svg>
+            </button>
+
+            <!-- SAVE -->
+            <button>
+              <svg viewBox="0 0 24 24">
+                <path d="M5 3H19L21 5V21H3V3Z" />
+                <path d="M7 3V9H17V3" />
+              </svg>
+            </button>
+
           </div>
+
         </header>
 
         <div class="instrucciones">
@@ -65,16 +109,17 @@
         </nav>
 
         <div class="editor-body">
-          <textarea id="htmlCode" class="code-input" placeholder="Escribe tu código HTML aquí..."></textarea>
-          <textarea id="cssCode" class="code-input hidden" placeholder="Escribe tu código CSS aquí..."></textarea>
-          <textarea id="jsCode" class="code-input hidden" placeholder="Escribe tu código JS aquí..."></textarea>
+          <textarea id="htmlCode" class="code-input"></textarea>
+          <textarea id="cssCode" class="code-input hidden"></textarea>
+          <textarea id="jsCode" class="code-input hidden"></textarea>
         </div>
+
       </aside>
 
-      <!-- Panel Derecho: Preview -->
       <main class="preview-panel">
         <iframe id="preview"></iframe>
       </main>
+
     </div>
   </div>
 

@@ -191,3 +191,53 @@ h1 {
   border: none;
   background: white;
 }
+
+/* --- ICONOS HEADER --- */
+
+.editor-header svg {
+  width: 18px;
+  height: 18px;
+  stroke: #aaa;
+  fill: none;
+  stroke-width: 1.5;
+}
+
+.nav-btn {
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+}
+
+.selector-tema {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  background: #111;
+  padding: 6px 12px;
+  border-radius: 8px;
+  border: 1px solid #333;
+}
+
+.selector-tema svg {
+  width: 16px;
+  height: 16px;
+}
+
+.selector-tema .arrow {
+  margin-left: auto;
+}
+
+.top-actions {
+  display: flex;
+  gap: 10px;
+}
+
+.top-actions button {
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+}
