@@ -79,7 +79,7 @@ h1 {
   background: rgba(255, 255, 255, 0.1);
 }
 
-/* LAYOUT DEL EDITOR */
+/* LAYOUT */
 .main-layout {
   display: flex;
   height: 100vh;
@@ -96,6 +96,7 @@ h1 {
   gap: 10px;
 }
 
+/* HEADER */
 .editor-header {
   display: flex;
   align-items: center;
@@ -105,19 +106,80 @@ h1 {
   font-size: 0.8rem;
   gap: 15px;
   border: 1px solid #333;
+  position: relative;
 }
+
+.editor-header svg {
+  width: 18px;
+  height: 18px;
+  stroke: #aaa;
+  fill: none;
+  stroke-width: 1.5;
+}
+
+.nav-btn,
+.top-actions button {
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  position: relative;
+}
+
 .selector-tema {
   flex-grow: 1;
-  color: #aaa;
-  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  background: #111;
+  padding: 6px 12px;
+  border-radius: 8px;
+  border: 1px solid #333;
+  position: relative;
 }
+
+.selector-tema .arrow {
+  margin-left: auto;
+}
+
 .progreso {
   background: #333;
   padding: 2px 10px;
   border-radius: 10px;
   color: #888;
+  position: relative;
 }
 
+.top-actions {
+  display: flex;
+  gap: 10px;
+}
+
+/* TOOLTIP */
+[data-tooltip]::after {
+  content: attr(data-tooltip);
+  position: absolute;
+  bottom: -30px;
+  left: 50%;
+  transform: translateX(-50%);
+  background: #111;
+  color: #ccc;
+  padding: 5px 8px;
+  font-size: 0.7rem;
+  border-radius: 5px;
+  white-space: nowrap;
+  opacity: 0;
+  pointer-events: none;
+  transition: 0.2s;
+  border: 1px solid #333;
+}
+
+[data-tooltip]:hover::after {
+  opacity: 1;
+}
+
+/* RESTO */
 .instrucciones {
   background: #151515;
   border-radius: 12px;
@@ -178,7 +240,6 @@ h1 {
   font-size: 0.9rem;
 }
 
-/* PANEL DE PREVISUALIZACIÓN */
 .preview-panel {
   flex-grow: 1;
   background: white;
@@ -189,55 +250,4 @@ h1 {
   width: 100%;
   height: 100%;
   border: none;
-  background: white;
-}
-
-/* --- ICONOS HEADER --- */
-
-.editor-header svg {
-  width: 18px;
-  height: 18px;
-  stroke: #aaa;
-  fill: none;
-  stroke-width: 1.5;
-}
-
-.nav-btn {
-  background: transparent;
-  border: none;
-  cursor: pointer;
-  display: flex;
-  align-items: center;
-}
-
-.selector-tema {
-  display: flex;
-  align-items: center;
-  gap: 8px;
-  background: #111;
-  padding: 6px 12px;
-  border-radius: 8px;
-  border: 1px solid #333;
-}
-
-.selector-tema svg {
-  width: 16px;
-  height: 16px;
-}
-
-.selector-tema .arrow {
-  margin-left: auto;
-}
-
-.top-actions {
-  display: flex;
-  gap: 10px;
-}
-
-.top-actions button {
-  background: transparent;
-  border: none;
-  cursor: pointer;
-  display: flex;
-  align-items: center;
 }
