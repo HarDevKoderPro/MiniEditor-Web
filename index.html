@@ -36,6 +36,25 @@
     </div>
   </div>
 
+  <!-- GESTIONAR -->
+  <div id="gestionarScreen" class="screen hidden">
+    <div class="admin-container">
+      <div class="admin-box">
+        <div class="admin-icon">👤⚙️</div>
+        <h2>Acceso Restringido</h2>
+        <p>Ingresa la palabra clave para acceder al panel de administración.</p>
+
+        <label>PALABRA CLAVE</label>
+        <div class="input-group">
+          <input type="password" id="adminPassword">
+          <span class="toggle-pass">👁</span>
+        </div>
+
+        <button id="btnAcceder">Acceder</button>
+      </div>
+    </div>
+  </div>
+
   <!-- EDITOR -->
   <div id="editorScreen" class="screen hidden">
     <div class="main-layout">
@@ -63,7 +82,6 @@
           <div class="progreso">0 / 0</div>
 
           <div class="top-actions">
-            <!-- ▶ BOTÓN PLAY -->
             <button id="runCodeBtn" data-tooltip="Ejecutar código">
               <svg viewBox="0 0 24 24">
                 <polygon points="5,3 19,12 5,21 5,3" />

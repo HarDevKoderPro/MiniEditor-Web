@@ -49,10 +49,18 @@ requestAnimationFrame(animate);
 const welcomeScreen = document.getElementById("welcomeScreen");
 const editorScreen = document.getElementById("editorScreen");
 const btnAprender = document.getElementById("btnAprender");
+const btnGestionar = document.getElementById("btnGestionar");
+const gestionarScreen = document.getElementById("gestionarScreen");
 
 btnAprender.addEventListener("click", () => {
   welcomeScreen.classList.add("hidden");
   editorScreen.classList.remove("hidden");
+});
+
+
+btnGestionar.addEventListener("click", () => {
+  welcomeScreen.classList.add("hidden");
+  gestionarScreen.classList.remove("hidden");
 });
 
 // =============================
@@ -246,4 +254,15 @@ function handleTab(e) {
 window.addEventListener("resize", () => {
   canvas.width = window.innerWidth;
   canvas.height = window.innerHeight;
+});
+
+// =============================
+// ADMIN LOGIN UI
+// =============================
+const togglePass = document.querySelector(".toggle-pass");
+const adminPassword = document.getElementById("adminPassword");
+
+togglePass.addEventListener("click", () => {
+  adminPassword.type =
+    adminPassword.type === "password" ? "text" : "password";
 });
