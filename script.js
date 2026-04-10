@@ -120,7 +120,15 @@ function updatePreview() {
 
 // ⚠️ ahora usa debounce
 [htmlInput, cssInput, jsInput].forEach((el) => {
-  el.addEventListener("input", updatePreviewDebounced);
+  el.addEventListener("input", () => {
+    // 🔥 detectar <hr> y actualizar inmediato
+    if (el.id === "htmlCode" && el.value.includes("<hr")) {
+      updatePreview();
+      return;
+    }
+
+    updatePreviewDebounced();
+  });
 });
 
 // =============================
