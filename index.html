@@ -11,7 +11,7 @@
 <body>
   <canvas id="matrixCanvas"></canvas>
 
-  <!-- SECCIÓN 1: BIENVENIDA -->
+  <!-- BIENVENIDA -->
   <div id="welcomeScreen" class="screen">
     <div class="welcome-container">
       <div class="profile-frame">
@@ -36,7 +36,7 @@
     </div>
   </div>
 
-  <!-- SECCIÓN 2: EDITOR -->
+  <!-- EDITOR -->
   <div id="editorScreen" class="screen hidden">
     <div class="main-layout">
 
@@ -44,14 +44,12 @@
 
         <header class="editor-header">
 
-          <!-- HOME -->
           <button class="nav-btn" onclick="location.reload()" data-tooltip="Inicio">
             <svg viewBox="0 0 24 24">
               <path d="M3 10L12 3L21 10V21H14V14H10V21H3Z" />
             </svg>
           </button>
 
-          <!-- SELECTOR -->
           <div class="selector-tema" data-tooltip="Seleccionar tema">
             <svg viewBox="0 0 24 24">
               <path d="M3 7H9L11 9H21V19H3Z" />
@@ -62,13 +60,9 @@
             </svg>
           </div>
 
-          <!-- PROGRESO -->
-          <div class="progreso" data-tooltip="Progreso">0 / 0</div>
+          <div class="progreso">0 / 0</div>
 
-          <!-- ACCIONES -->
           <div class="top-actions">
-
-            <!-- REFRESH (MEJORADO) -->
             <button data-tooltip="Actualizar preview">
               <svg viewBox="0 0 24 24">
                 <path d="M20 12a8 8 0 1 1-2.34-5.66" />
@@ -76,7 +70,6 @@
               </svg>
             </button>
 
-            <!-- MOBILE -->
             <button data-tooltip="Vista móvil">
               <svg viewBox="0 0 24 24">
                 <rect x="7" y="2" width="10" height="20" rx="2" />
@@ -84,14 +77,12 @@
               </svg>
             </button>
 
-            <!-- SAVE -->
             <button data-tooltip="Guardar código">
               <svg viewBox="0 0 24 24">
                 <path d="M5 3H19L21 5V21H3V3Z" />
                 <path d="M7 3V9H17V3" />
               </svg>
             </button>
-
           </div>
 
         </header>
