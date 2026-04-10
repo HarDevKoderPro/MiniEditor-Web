@@ -1,0 +1,193 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Segoe UI", sans-serif;
+}
+
+body {
+  background-color: #000;
+  color: white;
+  height: 100vh;
+  overflow: hidden;
+}
+
+#matrixCanvas {
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: -1;
+  opacity: 0.15;
+}
+
+.hidden {
+  display: none !important;
+}
+
+/* PANTALLA DE BIENVENIDA */
+.welcome-container {
+  text-align: center;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+.profile-frame {
+  width: 160px;
+  height: 160px;
+  border-radius: 50%;
+  border: 5px solid #4a90e2;
+  margin-bottom: 20px;
+  overflow: hidden;
+  box-shadow: 0 0 20px rgba(74, 144, 226, 0.3);
+}
+.profile-frame img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+h1 {
+  font-size: 2rem;
+  letter-spacing: 2px;
+}
+.highlight {
+  color: #4a90e2;
+}
+.author {
+  color: #666;
+  font-size: 0.8rem;
+  margin: 10px 0 40px;
+}
+.options {
+  display: flex;
+  gap: 20px;
+}
+.card {
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 12px;
+  padding: 20px;
+  width: 180px;
+  color: white;
+  cursor: pointer;
+  transition: 0.3s;
+}
+.card:hover {
+  transform: translateY(-5px);
+  border-color: #4a90e2;
+  background: rgba(255, 255, 255, 0.1);
+}
+
+/* LAYOUT DEL EDITOR */
+.main-layout {
+  display: flex;
+  height: 100vh;
+  width: 100vw;
+  padding: 10px;
+  gap: 10px;
+  background: #0a0a0a;
+}
+
+.sidebar {
+  width: 450px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.editor-header {
+  display: flex;
+  align-items: center;
+  background: #1a1a1a;
+  padding: 8px 15px;
+  border-radius: 8px;
+  font-size: 0.8rem;
+  gap: 15px;
+  border: 1px solid #333;
+}
+.selector-tema {
+  flex-grow: 1;
+  color: #aaa;
+  cursor: pointer;
+}
+.progreso {
+  background: #333;
+  padding: 2px 10px;
+  border-radius: 10px;
+  color: #888;
+}
+
+.instrucciones {
+  background: #151515;
+  border-radius: 12px;
+  padding: 30px;
+  text-align: center;
+  border: 1px solid #222;
+}
+.code-icon {
+  font-size: 1.5rem;
+  color: #444;
+  margin-bottom: 10px;
+}
+.instrucciones p {
+  font-size: 0.85rem;
+  color: #666;
+}
+
+.tab-container {
+  display: flex;
+  background: #1a1a1a;
+  border-radius: 20px;
+  padding: 4px;
+  gap: 5px;
+}
+.tab {
+  flex: 1;
+  border: none;
+  background: none;
+  color: #888;
+  padding: 8px;
+  cursor: pointer;
+  border-radius: 15px;
+  font-weight: bold;
+  transition: 0.3s;
+}
+.tab.active {
+  background: #4a90e2;
+  color: white;
+}
+
+.editor-body {
+  flex-grow: 1;
+  background: #111;
+  border-radius: 12px;
+  border: 1px solid #222;
+  overflow: hidden;
+}
+.code-input {
+  width: 100%;
+  height: 100%;
+  background: transparent;
+  border: none;
+  color: #00ff00;
+  padding: 20px;
+  font-family: "Courier New", monospace;
+  resize: none;
+  outline: none;
+  font-size: 0.9rem;
+}
+
+/* PANEL DE PREVISUALIZACIÓN */
+.preview-panel {
+  flex-grow: 1;
+  background: white;
+  border-radius: 15px;
+  overflow: hidden;
+}
+#preview {
+  width: 100%;
+  height: 100%;
+  border: none;
+  background: white;
+}

@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Mini Editor Web - Interactivo</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+  <canvas id="matrixCanvas"></canvas>
+
+  <!-- SECCIÓN 1: BIENVENIDA -->
+  <div id="welcomeScreen" class="screen">
+    <div class="welcome-container">
+      <div class="profile-frame">
+        <img src="./portada.webp" alt="Workspace">
+      </div>
+      <header>
+        <h1>BIENVENIDO AL <br><span class="highlight">MINI EDITOR WEB</span></h1>
+        <p class="author">By Ing. Harold David Valdés</p>
+      </header>
+      <nav class="options">
+        <button class="card" id="btnAprender">
+          <span class="icon">🎯</span>
+          <h3>APRENDER</h3>
+          <p>Realiza actividades guiadas paso a paso.</p>
+        </button>
+        <button class="card" id="btnGestionar">
+          <span class="icon">⚙️</span>
+          <h3>GESTIONAR</h3>
+          <p>Carga nuevos temas y desafíos (Admin).</p>
+        </button>
+      </nav>
+    </div>
+  </div>
+
+  <!-- SECCIÓN 2: EDITOR (Oculto al inicio) -->
+  <div id="editorScreen" class="screen hidden">
+    <div class="main-layout">
+      <!-- Panel Izquierdo: Código -->
+      <aside class="sidebar">
+        <header class="editor-header">
+          <button class="nav-btn" onclick="location.reload()">🏠</button>
+          <div class="selector-tema">
+            <span>📁 Seleccionar Tema</span>
+            <span class="arrow">⌄</span>
+          </div>
+          <div class="progreso">0 / 3</div>
+          <div class="top-actions">
+            <span>🔄</span> <span>💾</span> <span>🗖</span>
+          </div>
+        </header>
+
+        <div class="instrucciones">
+          <div class="code-icon">&lt; &gt;</div>
+          <p>Selecciona un tema o actividad para comenzar</p>
+        </div>
+
+        <nav class="tab-container">
+          <button class="tab active" data-lang="html">HTML</button>
+          <button class="tab" data-lang="css">CSS</button>
+          <button class="tab" data-lang="js">JS</button>
+        </nav>
+
+        <div class="editor-body">
+          <textarea id="htmlCode" class="code-input" placeholder="Escribe tu código HTML aquí..."></textarea>
+          <textarea id="cssCode" class="code-input hidden" placeholder="Escribe tu código CSS aquí..."></textarea>
+          <textarea id="jsCode" class="code-input hidden" placeholder="Escribe tu código JS aquí..."></textarea>
+        </div>
+      </aside>
+
+      <!-- Panel Derecho: Preview -->
+      <main class="preview-panel">
+        <iframe id="preview"></iframe>
+      </main>
+    </div>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+
+</html>
