@@ -57,10 +57,19 @@ btnAprender.addEventListener("click", () => {
   editorScreen.classList.remove("hidden");
 });
 
-
 btnGestionar.addEventListener("click", () => {
   welcomeScreen.classList.add("hidden");
   gestionarScreen.classList.remove("hidden");
+});
+
+// =============================
+// BOTÓN HOME DESDE ADMIN
+// =============================
+const btnHomeFromAdmin = document.getElementById("btnHomeFromAdmin");
+
+btnHomeFromAdmin.addEventListener("click", () => {
+  gestionarScreen.classList.add("hidden");
+  welcomeScreen.classList.remove("hidden");
 });
 
 // =============================
@@ -212,7 +221,6 @@ function handleTab(e) {
 
       if (voidTags.includes(word)) {
         tag = `<${word}>`;
-
         textarea.value =
           value.substring(0, start - word.length) +
           tag +
@@ -220,12 +228,10 @@ function handleTab(e) {
 
         textarea.selectionStart = textarea.selectionEnd =
           start - word.length + tag.length;
-
         return;
       }
 
       tag = `<${word}></${word}>`;
-
       const newStart = start - word.length;
 
       textarea.value =
@@ -263,16 +269,28 @@ const togglePass = document.querySelector(".toggle-pass");
 const adminPassword = document.getElementById("adminPassword");
 
 togglePass.addEventListener("click", () => {
-  adminPassword.type =
-    adminPassword.type === "password" ? "text" : "password";
+  adminPassword.type = adminPassword.type === "password" ? "text" : "password";
 });
 
 // =============================
-// BOTÓN HOME DESDE ADMIN
+// VALIDACIÓN CON JSON
 // =============================
-const btnHomeFromAdmin = document.getElementById("btnHomeFromAdmin");
+const btnAcceder = document.getElementById("btnAcceder");
 
-btnHomeFromAdmin.addEventListener("click", () => {
-  gestionarScreen.classList.add("hidden");
-  welcomeScreen.classList.remove("hidden");
+btnAcceder.addEventListener("click", async () => {
+  const inputPass = adminPassword.value.trim();
+
+  try {
+    const response = await fetch("admin.json");
+    const data = await response.json();
+
+    if (inputPass === data.password) {
+      alert("Acceso concedido");
+    } else {
+      alert("Acceso denegado");
+    }
+  } catch (error) {
+    alert("Error al cargar el archivo JSON");
+    console.error(error);
+  }
 });
