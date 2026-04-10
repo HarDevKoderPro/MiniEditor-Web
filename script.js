@@ -32,7 +32,7 @@ const draw = () => {
 };
 
 let lastTime = 0;
-const fps = 30; // 👈 cambia este valor
+const fps = 30;
 
 function animate(time) {
   if (time - lastTime > 1000 / fps) {
@@ -53,7 +53,6 @@ const btnAprender = document.getElementById("btnAprender");
 btnAprender.addEventListener("click", () => {
   welcomeScreen.classList.add("hidden");
   editorScreen.classList.remove("hidden");
-  updatePreview();
 });
 
 // =============================
@@ -68,6 +67,19 @@ const jsInput = document.getElementById("jsCode");
 
 const preview = document.getElementById("preview");
 
+// ▶ BOTÓN PLAY
+const runCodeBtn = document.getElementById("runCodeBtn");
+
+runCodeBtn.addEventListener("click", () => {
+  runCodeBtn.classList.add("running");
+
+  updatePreview();
+
+  setTimeout(() => {
+    runCodeBtn.classList.remove("running");
+  }, 400);
+});
+
 // CAMBIO DE PESTAÑAS
 tabs.forEach((tab) => {
   tab.addEventListener("click", () => {
@@ -79,19 +91,6 @@ tabs.forEach((tab) => {
     document.getElementById(`${lang}Code`).classList.remove("hidden");
   });
 });
-
-// =============================
-// 🔥 DEBOUNCE (SOLUCIÓN)
-// =============================
-let debounceTimer;
-
-function updatePreviewDebounced() {
-  clearTimeout(debounceTimer);
-
-  debounceTimer = setTimeout(() => {
-    updatePreview();
-  }, 600);
-}
 
 // =============================
 // PREVIEW
@@ -118,24 +117,9 @@ function updatePreview() {
   dest.close();
 }
 
-// ⚠️ ahora usa debounce
-[htmlInput, cssInput, jsInput].forEach((el) => {
-  el.addEventListener("input", () => {
-    // 🔥 detectar <hr> y actualizar inmediato
-    if (el.id === "htmlCode" && el.value.includes("<hr")) {
-      updatePreview();
-      return;
-    }
-
-    updatePreviewDebounced();
-  });
-});
-
 // =============================
-// NUEVAS FUNCIONALIDADES
+// AUTOCIERRE Y TAB
 // =============================
-
-// TAGS HTML
 const htmlTags = [
   "html",
   "head",
@@ -179,18 +163,10 @@ const htmlTags = [
   "hr",
 ];
 
-// TAGS SIN CIERRE (VOID)
 const voidTags = ["br", "hr", "img", "input", "meta", "link"];
 
-// AUTO-CIERRE BRACKETS
 function autoCloseBrackets(e) {
-  const pairs = {
-    "(": ")",
-    "{": "}",
-    "[": "]",
-    '"': '"',
-    "'": "'",
-  };
+  const pairs = { "(": ")", "{": "}", "[": "]", '"': '"', "'": "'" };
 
   if (pairs[e.key]) {
     e.preventDefault();
@@ -208,7 +184,6 @@ function autoCloseBrackets(e) {
   }
 }
 
-// TAB: AUTOCOMPLETADO + INDENTACIÓN
 function handleTab(e) {
   if (e.key !== "Tab") return;
 
@@ -228,8 +203,7 @@ function handleTab(e) {
       let tag;
 
       if (voidTags.includes(word)) {
-        const cleanWord = word.toLowerCase();
-        tag = `<${cleanWord}>`;
+        tag = `<${word}>`;
 
         textarea.value =
           value.substring(0, start - word.length) +
@@ -256,15 +230,11 @@ function handleTab(e) {
     }
   }
 
-  // INDENTACIÓN
   e.preventDefault();
-
   textarea.value = value.substring(0, start) + "\t" + value.substring(start);
-
   textarea.selectionStart = textarea.selectionEnd = start + 1;
 }
 
-// EVENTOS
 [htmlInput, cssInput, jsInput].forEach((el) => {
   el.addEventListener("keydown", autoCloseBrackets);
   el.addEventListener("keydown", handleTab);
