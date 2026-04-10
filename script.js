@@ -31,7 +31,17 @@ const draw = () => {
   }
 };
 
-setInterval(draw, 30);
+let lastTime = 0;
+const fps = 30; // 👈 cambia este valor
+
+function animate(time) {
+  if (time - lastTime > 1000 / fps) {
+    draw();
+    lastTime = time;
+  }
+  requestAnimationFrame(animate);
+}
+requestAnimationFrame(animate);
 
 // =============================
 // NAVEGACIÓN
@@ -71,6 +81,19 @@ tabs.forEach((tab) => {
 });
 
 // =============================
+// 🔥 DEBOUNCE (SOLUCIÓN)
+// =============================
+let debounceTimer;
+
+function updatePreviewDebounced() {
+  clearTimeout(debounceTimer);
+
+  debounceTimer = setTimeout(() => {
+    updatePreview();
+  }, 600);
+}
+
+// =============================
 // PREVIEW
 // =============================
 function updatePreview() {
@@ -95,8 +118,9 @@ function updatePreview() {
   dest.close();
 }
 
+// ⚠️ ahora usa debounce
 [htmlInput, cssInput, jsInput].forEach((el) => {
-  el.addEventListener("input", updatePreview);
+  el.addEventListener("input", updatePreviewDebounced);
 });
 
 // =============================
@@ -195,7 +219,6 @@ function handleTab(e) {
 
       let tag;
 
-      // ===== CORRECCIÓN AQUÍ (VOID TAGS COMO br y hr) =====
       if (voidTags.includes(word)) {
         const cleanWord = word.toLowerCase();
         tag = `<${cleanWord}>`;
@@ -210,9 +233,7 @@ function handleTab(e) {
 
         return;
       }
-      // ====================================================
 
-      // TAGS NORMALES
       tag = `<${word}></${word}>`;
 
       const newStart = start - word.length;
@@ -227,7 +248,7 @@ function handleTab(e) {
     }
   }
 
-  // INDENTACIÓN NORMAL
+  // INDENTACIÓN
   e.preventDefault();
 
   textarea.value = value.substring(0, start) + "\t" + value.substring(start);
@@ -235,47 +256,11 @@ function handleTab(e) {
   textarea.selectionStart = textarea.selectionEnd = start + 1;
 }
 
-// FORMATEO CTRL + F
-function formatCode(e) {
-  if (e.ctrlKey && e.key.toLowerCase() === "f") {
-    e.preventDefault();
-
-    const textarea = document.activeElement;
-    if (!textarea.classList.contains("code-input")) return;
-
-    let lines = textarea.value.split("\n");
-    let indent = 0;
-
-    const formatted = lines.map((line) => {
-      line = line.trim();
-
-      if (line.startsWith("</")) indent--;
-
-      const result = "\t".repeat(indent) + line;
-
-      if (
-        line.startsWith("<") &&
-        !line.startsWith("</") &&
-        !line.endsWith("/>")
-      ) {
-        indent++;
-      }
-
-      return result;
-    });
-
-    textarea.value = formatted.join("\n");
-    updatePreview();
-  }
-}
-
 // EVENTOS
 [htmlInput, cssInput, jsInput].forEach((el) => {
   el.addEventListener("keydown", autoCloseBrackets);
   el.addEventListener("keydown", handleTab);
 });
-
-document.addEventListener("keydown", formatCode);
 
 // =============================
 // RESPONSIVE CANVAS
