@@ -305,4 +305,7 @@ const btnBackToHome = document.getElementById("btnBackToHome");
 btnBackToHome.addEventListener("click", () => {
   document.getElementById("adminPanelScreen").classList.add("hidden");
   welcomeScreen.classList.remove("hidden");
+
+  // 🔥 limpiar contraseña aunque no se vea
+  adminPassword.value = "";
 });
