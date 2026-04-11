@@ -63,7 +63,7 @@ btnGestionar.addEventListener("click", () => {
 });
 
 // =============================
-// BOTÓN HOME DESDE ADMIN
+// BOTÓN HOME DESDE ADMIN LOGIN
 // =============================
 const btnHomeFromAdmin = document.getElementById("btnHomeFromAdmin");
 
@@ -273,7 +273,7 @@ togglePass.addEventListener("click", () => {
 });
 
 // =============================
-// VALIDACIÓN CON JSON
+// VALIDACIÓN CON JSON (FIX + REDIRECCIÓN)
 // =============================
 const btnAcceder = document.getElementById("btnAcceder");
 
@@ -285,7 +285,9 @@ btnAcceder.addEventListener("click", async () => {
     const data = await response.json();
 
     if (inputPass === data.password) {
-      alert("Acceso concedido");
+      // 🔥 AQUÍ ESTABA EL BUG: no redirigía
+      gestionarScreen.classList.add("hidden");
+      document.getElementById("adminPanelScreen").classList.remove("hidden");
     } else {
       alert("Acceso denegado");
     }
@@ -293,4 +295,14 @@ btnAcceder.addEventListener("click", async () => {
     alert("Error al cargar el archivo JSON");
     console.error(error);
   }
+});
+
+// =============================
+// VOLVER DESDE PANEL ADMIN
+// =============================
+const btnBackToHome = document.getElementById("btnBackToHome");
+
+btnBackToHome.addEventListener("click", () => {
+  document.getElementById("adminPanelScreen").classList.add("hidden");
+  welcomeScreen.classList.remove("hidden");
 });

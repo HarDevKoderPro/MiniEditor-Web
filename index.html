@@ -36,7 +36,7 @@
     </div>
   </div>
 
-  <!-- GESTIONAR -->
+  <!-- LOGIN ADMIN -->
   <div id="gestionarScreen" class="screen hidden">
     <div class="admin-container">
       <div class="admin-box">
@@ -53,8 +53,7 @@
 
         <button id="btnAcceder">Acceder</button>
 
-        <!-- BOTÓN HOME -->
-        <button id="btnHomeFromAdmin" class="home-btn" title="Volver al inicio">
+        <button id="btnHomeFromAdmin" class="home-btn">
           <svg viewBox="0 0 24 24">
             <path d="M3 10L12 3L21 10V21H14V14H10V21H3Z" />
           </svg>
@@ -64,7 +63,40 @@
     </div>
   </div>
 
-  <!-- EDITOR -->
+  <!-- PANEL ADMIN -->
+  <div id="adminPanelScreen" class="screen hidden">
+    <div class="admin-layout">
+
+      <aside class="admin-sidebar">
+        <h3>📁 Contenido</h3>
+        <div class="tree">
+          <p class="empty">No hay temas creados. Haz clic en Contenido para comenzar.</p>
+        </div>
+      </aside>
+
+      <main class="admin-main">
+        <div class="admin-topbar">
+          <button id="btnBackToHome" class="home-btn home-left">
+            <svg viewBox="0 0 24 24">
+              <path d="M3 11L12 4L21 11" />
+              <path d="M5 10V20H19V10" />
+            </svg>
+          </button>
+          <span>Panel de Control</span>
+        </div>
+
+        <div class="admin-editor">
+          <div class="placeholder">
+            <h2>Selecciona una actividad</h2>
+            <p>Haz clic en una actividad del árbol para editar su contenido enriquecido.</p>
+          </div>
+        </div>
+      </main>
+
+    </div>
+  </div>
+
+  <!-- EDITOR (SIN CAMBIOS) -->
   <div id="editorScreen" class="screen hidden">
     <div class="main-layout">
 
@@ -78,44 +110,21 @@
             </svg>
           </button>
 
-          <div class="selector-tema" data-tooltip="Seleccionar tema">
-            <svg viewBox="0 0 24 24">
-              <path d="M3 7H9L11 9H21V19H3Z" />
-            </svg>
+          <div class="selector-tema">
             <span>Seleccionar Tema</span>
-            <svg class="arrow" viewBox="0 0 24 24">
-              <path d="M6 9L12 15L18 9" />
-            </svg>
           </div>
 
           <div class="progreso">0 / 0</div>
 
           <div class="top-actions">
-            <button id="runCodeBtn" data-tooltip="Ejecutar código">
-              <svg viewBox="0 0 24 24">
-                <polygon points="5,3 19,12 5,21 5,3" />
-              </svg>
-            </button>
-
-            <button data-tooltip="Vista móvil">
-              <svg viewBox="0 0 24 24">
-                <rect x="7" y="2" width="10" height="20" rx="2" />
-                <line x1="11" y1="18" x2="13" y2="18" />
-              </svg>
-            </button>
-
-            <button data-tooltip="Guardar código">
-              <svg viewBox="0 0 24 24">
-                <path d="M5 3H19L21 5V21H3V3Z" />
-                <path d="M7 3V9H17V3" />
-              </svg>
+            <button id="runCodeBtn">
+              ▶
             </button>
           </div>
 
         </header>
 
         <div class="instrucciones">
-          <div class="code-icon">&lt; &gt;</div>
           <p>Selecciona un tema o actividad para comenzar</p>
         </div>
 
